@@ -60,8 +60,10 @@ public class InterfazRegistro extends AppCompatActivity {
         correo= correoIngresado.getText().toString();
         password= passwordIngresado.getText().toString();
         passwordConfirmacion= passwordIngresado2.getText().toString();
+
         userEmpresa= findViewById(R.id.radioButton);
         userCliente= findViewById(R.id.radioButton2);
+
         if (validarDatosRegistro(password, passwordConfirmacion,correo, userCliente, userEmpresa)) {
             if (userEmpresa.isChecked()) {
                 empresa = new Empresa(correo, password, 'e');

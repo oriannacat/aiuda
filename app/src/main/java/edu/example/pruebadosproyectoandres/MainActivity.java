@@ -16,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(newIntent);
     }
 
+    public void btnIniciarSesion(View v){
+        Intent newIntent = new Intent(this, MainActivityCliente.class);
+        startActivity(newIntent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
