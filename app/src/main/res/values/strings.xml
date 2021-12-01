@@ -15,4 +15,5 @@
     <string name="cantidad_del_producto">Cantidad del producto</string>
     <string name="filter">Filtrar RecyclerView items</string>
     <string name="añadir_producto">Añadir producto</string>
+    <string name="men_principal">Menú Principal</string>
 </resources>

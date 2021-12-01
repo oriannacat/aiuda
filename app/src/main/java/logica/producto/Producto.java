@@ -85,4 +85,16 @@ public class Producto {
     public void setUbicImg(String ubicImg) {
         this.ubicImg = ubicImg;
     }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
 }
