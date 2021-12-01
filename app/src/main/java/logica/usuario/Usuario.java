@@ -1,9 +1,4 @@
 package logica.usuario;
-
-import java.net.InterfaceAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.util.Enumeration;
 import org.json.*;
 /**
  * Clase encargada de manejar la información por usuario
@@ -17,7 +12,7 @@ public class Usuario{
     private Password password;
     private Correo email;
     private char tipoCuenta;
-    private JSONObject usuarioJSON;
+    protected JSONObject usuarioJSON;
 
     /**
      * Constructor donde se inicializan los atributos por defecto
@@ -28,9 +23,9 @@ public class Usuario{
     }
 
     public Usuario(String password,String email,char tipoCuenta){
-        this.password.setPassword(password);
-        this.email.setAddress(email);
-        //this.tipoCuenta.setTipoCuenta(tipoCuenta);
+        this.password= new Password(password);
+        this.email=new Correo(email);
+        this.tipoCuenta=tipoCuenta;
     }
 
     /**

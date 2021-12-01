@@ -1,13 +1,15 @@
 package logica.usuario;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Cliente extends Usuario{
 
     public Cliente(){ }
 
-    public Cliente (String password, String email) {
-        super(password, email);
+    public Cliente (String password, String email,char tipoDeCuenta) {
+        super(password, email,tipoDeCuenta);
+        usuarioJSON=new JSONObject();
     }
 
     public void llenarObjetoClienteJson(Cliente cliente) {

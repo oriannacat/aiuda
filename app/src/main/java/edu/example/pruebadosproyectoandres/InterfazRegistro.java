@@ -1,8 +1,5 @@
 package edu.example.pruebadosproyectoandres;
 
-import static java.lang.String.*;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,6 +7,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import logica.ficheros.GuardarDatos;
 import logica.ficheros.ListaUsuariosClientes;
 import logica.ficheros.ListaUsuariosEmpresas;
 import logica.usuario.*;
@@ -21,7 +19,6 @@ public class InterfazRegistro extends AppCompatActivity {
 
     Empresa empresa; Cliente cliente;
     RadioButton userEmpresa, userCliente;
-    private TextView advertencia1, advertencia2, advertencia3, advertencia4;
 
     public boolean validarDatosRegistro(String password1, String password2,
                                         String correo, RadioButton cliente,
@@ -67,23 +64,28 @@ public class InterfazRegistro extends AppCompatActivity {
         userCliente= findViewById(R.id.radioButton2);
         if (validarDatosRegistro(password, passwordConfirmacion,correo, userCliente, userEmpresa)) {
             if (userEmpresa.isChecked()) {
-                empresa = new Empresa(correo, password);
+                empresa = new Empresa(correo, password, 'e');
                 ListaUsuariosEmpresas.getListaUsuariosEmpresas().add(empresa);
                 System.out.println("Empresa Llena");
+                GuardarDatos.procesoGuardadoEmpresas();
                 Toast.makeText(getApplicationContext(), "¡usuario empresa registrado existosamente!", Toast.LENGTH_SHORT).show();
             }
             if (userCliente.isChecked()) {
-                cliente = new Cliente(correo, password);
+                cliente = new Cliente(password, correo, 'c');
                 ListaUsuariosClientes.getListaUsuariosClientes().add(cliente);
+                /*if (ListaUsuariosClientes.getListaUsuariosClientes().isEmpty())
+                    Toast.makeText(getApplicationContext(), "La lista de clientes está vacía", Toast.LENGTH_SHORT).show();
+                else{*/
                 System.out.println("Cliente Lleno");
-                Toast.makeText(getApplicationContext(), "¡usuario cliente existosamente!", Toast.LENGTH_SHORT).show();
+                GuardarDatos.procesoGuardadoClientes();
+                Toast.makeText(getApplicationContext(), "¡usuario cliente registrado existosamente!", Toast.LENGTH_SHORT).show();
             }
         }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        startActivity(new Intent(valueOf(InterfazRegistro.this)));
+        setContentView(R.layout.activity_interfaz_registro);
     }
 
 }

@@ -17,7 +17,7 @@ public class LeerDatos {
         org.json.JSONArray jsonLista;
         JSONParser lectura = new JSONParser();
         //La ruta del archivo no debe ser específico.
-        try (FileReader reader = new FileReader("C:/Users/Andres/AndroidStudioProjects/pruebaDosProyectoAndres/app/files/usuariosClientes.json")) {
+        try (FileReader reader = new FileReader("files/usuariosClientes.json")) {
             Object objeto = lectura.parse(reader);
             jsonLista = (org.json.JSONArray) objeto;
             ListaUsuariosClientes.setListaUsuariosClientesJSON(jsonLista);
@@ -33,7 +33,7 @@ public class LeerDatos {
         org.json.JSONArray jsonLista;
         JSONParser lectura = new JSONParser();
         //La ruta del archivo no debe ser específico.
-        try (FileReader reader = new FileReader("C:/Users/Andres/AndroidStudioProjects/pruebaDosProyectoAndres/app/files/usuariosEmpresas.json")) {
+        try (FileReader reader = new FileReader("files/usuariosEmpresas.json")) {
             Object objeto = lectura.parse(reader);
             jsonLista = (org.json.JSONArray) objeto;
             ListaUsuariosEmpresas.setListaUsuariosEmpresasJSON(jsonLista);

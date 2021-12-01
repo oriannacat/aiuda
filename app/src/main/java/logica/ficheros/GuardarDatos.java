@@ -10,28 +10,40 @@ public class GuardarDatos {
         Cliente cliente;
         GuardarDatos guardar= new GuardarDatos();
         for (Cliente usuarioCliente: ListaUsuariosClientes.getListaUsuariosClientes()) {
-            if(!ListaUsuariosClientes.correoExisteEnJSON(usuarioCliente.getEmail())) {
-                cliente= (Cliente) ListaUsuariosClientes.buscarUsuario(usuarioCliente.getEmail());
+            if(!ListaUsuariosClientes.correoExisteEnClientesJSON(usuarioCliente.getEmail())) {
+                cliente = (Cliente) ListaUsuariosClientes.buscarUsuarioClientes(usuarioCliente.getEmail());
                 cliente.llenarObjetoClienteJson(cliente);
                 ListaUsuariosClientes.agregarUsuarioAListaJSON(cliente.getUsuarioJSON(), ListaUsuariosClientes.getListaUsuariosClientesJSON());}
         }
-        guardar.agregarAJson(ListaUsuariosClientes.getListaUsuariosClientesJSON());
+        guardar.agregarAJsonClientes(ListaUsuariosClientes.getListaUsuariosClientesJSON());
     }
 
     public static void procesoGuardadoEmpresas() {
         Empresa empresa;
         GuardarDatos guardar= new GuardarDatos();
         for (Empresa usuarioEmpresa: ListaUsuariosEmpresas.getListaUsuariosEmpresas()) {
-            if(!ListaUsuariosEmpresas.correoExisteEnJSON(usuarioEmpresa.getEmail())) {
-                empresa= (Empresa) ListaUsuariosEmpresas.buscarUsuario(usuarioEmpresa.getEmail());
+            if(!ListaUsuariosEmpresas.correoExisteEnEmpresasJSON(usuarioEmpresa.getEmail())) {
+                empresa= (Empresa) ListaUsuariosEmpresas.buscarUsuarioEmpresa(usuarioEmpresa.getEmail());
                 empresa.llenarObjetoEmpresaJson(empresa);
                 ListaUsuariosEmpresas.agregarUsuarioAListaJSON(empresa.getUsuarioJSON(),ListaUsuariosEmpresas.getListaUsuariosEmpresasJSON());}
         }
-        guardar.agregarAJson(ListaUsuariosEmpresas.getListaUsuariosEmpresasJSON());
+        guardar.agregarAJsonEmpresas(ListaUsuariosEmpresas.getListaUsuariosEmpresasJSON());
     }
 
-    public void agregarAJson(JSONArray ListaJson) {
-        try(FileWriter archivo= new FileWriter ("files/usuarios.json")){
+    public void agregarAJsonEmpresas(JSONArray ListaJson) {
+        try(FileWriter archivo= new FileWriter (" C:\\Users\\Andres\\AndroidStudioProjects\\pruebaDosProyectoAndres\\app\\files\\usuariosEmpresas.json")){
+            BufferedWriter buffer= new BufferedWriter (archivo);
+            buffer.write(ListaJson.toString());
+            buffer.close();
+        }
+
+        catch (IOException e){
+            System.out.println("Problemas al ingresar un dato al archivo");
+        }
+    }
+
+    public void agregarAJsonClientes(JSONArray ListaJson) {
+        try(FileWriter archivo= new FileWriter ("C:\\Users\\Andres\\AndroidStudioProjects\\pruebaDosProyectoAndres\\app\\files\\\\usuariosClientes.json\"")){
             BufferedWriter buffer= new BufferedWriter (archivo);
             buffer.write(ListaJson.toString());
             buffer.close();

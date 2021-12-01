@@ -45,6 +45,27 @@ public class ListaUsuariosEmpresas extends ListaUsuarios{
      * Metodo encargado de llenar los datos dentro de listaUsuarios
      */
 
+    public static Empresa buscarUsuarioEmpresa(String email) {
+        for (Empresa empresa: listaUsuariosEmpresas) {
+            if (empresa.getEmail().compareTo(email)==0)
+                return empresa;}
+        return null;}
+
+    public static boolean correoExisteEnEmpresasJSON(String correo)  {
+        String palabra;
+        for(int i=0;i<listaUsuariosEmpresasJSON.length();i++) {
+            try {
+                JSONObject json= (JSONObject) listaUsuariosEmpresasJSON.get(i);
+                palabra=(String)json.get("correo");
+                if (palabra.compareTo(correo)==0)
+                    return true;
+            } catch (JSONException e) {
+                System.out.println("Error en verificar si el correo existe o no");
+            }
+        }
+        return false;
+    }
+
     public static void llenarListaEstaticaEmpresas() {
         Encrypt desencriptar = new Encrypt();
         LeerDatos leer = new LeerDatos();
@@ -56,9 +77,10 @@ public class ListaUsuariosEmpresas extends ListaUsuarios{
                 json = listaUsuariosEmpresasJSON.getJSONObject(i);
                 empresa.setAddress((String) json.get("correo"));
                 empresa.setPassword(desencriptar.getAESDecrypt((String) json.get("contraseña")));
+                listaUsuariosEmpresas.add(empresa);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            listaUsuariosEmpresas.add(empresa); }
+        }
     }
 }
