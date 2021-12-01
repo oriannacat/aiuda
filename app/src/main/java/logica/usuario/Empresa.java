@@ -1,5 +1,7 @@
 package logica.usuario;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import logica.producto.Producto;
 
@@ -17,19 +19,15 @@ public class Empresa extends Usuario{
         super(password, email);
         this.listaPublicaciones = listaPublicaciones;
     }
-
-   /* public void llenarObjetoEmpresaJson(Empresa empresa) {
+      public void llenarObjetoEmpresaJson(Empresa empresa) {
         Encrypt encriptar=new Encrypt();
-        for (MonedasUsuario cripto: listaMonedas) {
-            listaMonedasJSON.add(cripto.getMonedaJSON());
-        }
-        //usuarioJSON.put("listaMonedas", listaMonedasJSON);
-        usuario.setPassword(encriptar.getAES(usuario.getPassword()));
-        usuarioJSON.put("contraseña",usuario.getPassword());
-        usuarioJSON.put("correo",usuario.getEmail());
-        if (usuario.obtenerDireccionIP()!=null) {
-            usuarioJSON.put("direccionIP",usuario.obtenerDireccionIP());
-        }
-    }*/
+        empresa.setPassword(encriptar.getAES(empresa.getPassword()));
+          try {
+              getUsuarioJSON().put("contraseña",empresa.getPassword());
+              getUsuarioJSON().put("correo",empresa.getEmail());
+              } catch (JSONException e) {
+              System.out.println("Error al insertar datos en JSON de Empresas");
+          }
+    }
 
 }

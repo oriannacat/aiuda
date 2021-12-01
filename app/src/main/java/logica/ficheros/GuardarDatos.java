@@ -7,25 +7,25 @@ import org.json.*;
 public class GuardarDatos {
 
     public static void procesoGuardadoClientes() {
-        Usuario user;
+        Cliente cliente;
         GuardarDatos guardar= new GuardarDatos();
-        for (Usuario usuario: ListaUsuariosClientes.getListaUsuariosClientes()) {
-            if(!ListaUsuariosClientes.correoExisteEnJSON(usuario.getEmail())) {
-                user=ListaUsuariosClientes.buscarUsuario(usuario.getEmail());
-                user.llenarObjetoJson(user);
-                ListaUsuariosClientes.agregarUsuarioAListaJSON(user.getUsuarioJSON(), ListaUsuariosClientes.getListaUsuariosClientesJSON());}
+        for (Cliente usuarioCliente: ListaUsuariosClientes.getListaUsuariosClientes()) {
+            if(!ListaUsuariosClientes.correoExisteEnJSON(usuarioCliente.getEmail())) {
+                cliente= (Cliente) ListaUsuariosClientes.buscarUsuario(usuarioCliente.getEmail());
+                cliente.llenarObjetoClienteJson(cliente);
+                ListaUsuariosClientes.agregarUsuarioAListaJSON(cliente.getUsuarioJSON(), ListaUsuariosClientes.getListaUsuariosClientesJSON());}
         }
         guardar.agregarAJson(ListaUsuariosClientes.getListaUsuariosClientesJSON());
     }
 
     public static void procesoGuardadoEmpresas() {
-        Usuario user;
+        Empresa empresa;
         GuardarDatos guardar= new GuardarDatos();
-        for (Usuario usuario: ListaUsuariosEmpresas.getListaUsuariosEmpresas()) {
-            if(!ListaUsuariosEmpresas.correoExisteEnJSON(usuario.getEmail())) {
-                user=ListaUsuariosEmpresas.buscarUsuario(usuario.getEmail());
-                user.llenarObjetoJson(user);
-                ListaUsuariosEmpresas.agregarUsuarioAListaJSON(user.getUsuarioJSON(),ListaUsuariosEmpresas.getListaUsuariosEmpresasJSON());}
+        for (Empresa usuarioEmpresa: ListaUsuariosEmpresas.getListaUsuariosEmpresas()) {
+            if(!ListaUsuariosEmpresas.correoExisteEnJSON(usuarioEmpresa.getEmail())) {
+                empresa= (Empresa) ListaUsuariosEmpresas.buscarUsuario(usuarioEmpresa.getEmail());
+                empresa.llenarObjetoEmpresaJson(empresa);
+                ListaUsuariosEmpresas.agregarUsuarioAListaJSON(empresa.getUsuarioJSON(),ListaUsuariosEmpresas.getListaUsuariosEmpresasJSON());}
         }
         guardar.agregarAJson(ListaUsuariosEmpresas.getListaUsuariosEmpresasJSON());
     }

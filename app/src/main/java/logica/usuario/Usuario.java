@@ -95,22 +95,6 @@ public class Usuario{
     }
 
 
-
-    @SuppressWarnings("unchecked")
-     public void llenarObjetoJson(Usuario usuario) {
-      /*  Encrypt encriptar=new Encrypt();
-        for (MonedasUsuario cripto: listaMonedas) {
-            listaMonedasJSON.add(cripto.getMonedaJSON());
-        }
-        //usuarioJSON.put("listaMonedas", listaMonedasJSON);
-        usuario.setPassword(encriptar.getAES(usuario.getPassword()));
-        usuarioJSON.put("contraseña",usuario.getPassword());
-        usuarioJSON.put("correo",usuario.getEmail());
-        if (usuario.obtenerDireccionIP()!=null) {
-            usuarioJSON.put("direccionIP",usuario.obtenerDireccionIP());
-        }*/
-    }
-
     /**
      * Verifica si el correo existe
      * @param correo correo a validar
@@ -134,25 +118,5 @@ public class Usuario{
         } else {
             return false;
         }
-    }
-
-    /**
-     * Metodo encargado de obtener la direcciónIP
-     * @return devuelve la dirección IP
-     */
-    public String obtenerDireccionIP(){
-        try {
-            Enumeration<NetworkInterface> interfaz = NetworkInterface.getNetworkInterfaces();
-            while( interfaz.hasMoreElements()){
-                for ( InterfaceAddress direccion : interfaz.nextElement().getInterfaceAddresses()) {
-                    if ( direccion.getAddress().isSiteLocalAddress()) {
-                        return direccion.toString();
-                    }
-                }
-            }
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

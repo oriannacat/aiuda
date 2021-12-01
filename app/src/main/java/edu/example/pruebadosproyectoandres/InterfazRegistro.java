@@ -5,7 +5,6 @@ import static java.lang.String.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -22,8 +21,7 @@ public class InterfazRegistro extends AppCompatActivity {
 
     Empresa empresa; Cliente cliente;
     RadioButton userEmpresa, userCliente;
-    Button button;
-
+    private TextView advertencia1, advertencia2, advertencia3, advertencia4;
 
     public boolean validarDatosRegistro(String password1, String password2,
                                         String correo, RadioButton cliente,
@@ -58,7 +56,6 @@ public class InterfazRegistro extends AppCompatActivity {
     }
 
      public void buttonPress(View view) {
-        System.out.println("SÍ ENTRO");
         EditText correoIngresado = findViewById(R.id.editTextTextEmailAddress2);
         EditText passwordIngresado = findViewById (R.id.editTextTextPassword2);
         EditText passwordIngresado2 = findViewById (R.id.editTextTextPassword3);
@@ -68,7 +65,6 @@ public class InterfazRegistro extends AppCompatActivity {
         passwordConfirmacion= passwordIngresado2.getText().toString();
         userEmpresa= findViewById(R.id.radioButton);
         userCliente= findViewById(R.id.radioButton2);
-         System.out.println("SÍ ENTRO");
         if (validarDatosRegistro(password, passwordConfirmacion,correo, userCliente, userEmpresa)) {
             if (userEmpresa.isChecked()) {
                 empresa = new Empresa(correo, password);
