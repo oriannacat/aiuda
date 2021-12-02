@@ -21,10 +21,14 @@ public class MostrarDatosDespuesDeRegistro extends AppCompatActivity {
         if(currEmpresa!=null){
             TextView UserName = findViewById(R.id.nombreUsuario);
             UserName.setText(currEmpresa.getUserName());
+            TextView tipoEmpresa = findViewById(R.id.tipoCuenta);
+            tipoEmpresa.setText("Empresa");
 
         }else if(currCliente!=null){
             TextView UserName = findViewById(R.id.nombreUsuario);
             UserName.setText(currCliente.getUserName());
+            TextView tipoEmpresa = findViewById(R.id.tipoCuenta);
+            tipoEmpresa.setText("Cliente");
         }
 
 
